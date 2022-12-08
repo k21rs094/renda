@@ -36,16 +36,19 @@ function startGame() {
 // 【mBaaS】データの保存
 function saveScore (name, score) {
     // **********【問題１】名前とスコアを保存しよう！**********
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    var GameScore = ncmb.DataStore("GameScore");
+    var gameScore = new GameScore(); // インスタンスの生成
+    gameScore.set("name", name);
+    gameScore.set("score", score);
+    gameScore.save()
+        .then(function(){
+            // 保存後の処理
+            console.log("保存に成功しました。");
+        })
+        .catch(function(error){
+            // エラー処理
+            console.log("保存に失敗しました。エラー:" + error);
+        });
     
     // ********************************************************
 }
